@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> Signin </title>
+    <title>BullRun V3 Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon href="https://1dapp.github.io/signup/assets/img/bullrun3.png">
@@ -36,6 +36,38 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <!--===============================================================================================-->
     
+    <style>
+       .container-login100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: -webkit-gradient(linear, left top, right top, from(#a34ffe), to(#5934FC));
+    background: -webkit-linear-gradient(left, #A34FFE, #5934FC);
+    background: -moz-linear-gradient(left, #A34FFE, #5934FC);
+    background: -o-linear-gradient(left, #A34FFE, #5934FC);
+    background-color: linear-gradient(to right, #A34FFE, #5934FC);
+    background: #a34ffe url(assets/img/bg.png);
+    background-size: cover;
+}
+.login100-form {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 48px 65px 40px 65px;
+    background-color: #26038f;
+}
+   </style>                                                                       
     
     <script> 
     var myContractInstance;
@@ -194,7 +226,7 @@ $(document).ready(function () {
             myContractInstance.methods.users(account).call().then(function (result) {
                 if (result[0]) {
                     localStorage.setItem("address", account);
-                    location.href = "https://oneid10.github.io/Dashboard";
+                    location.href = "https://1dapp.github.io/Home-Dashboard";
                 }
                 else {
                     $('.error').html('You need to register first');
@@ -223,7 +255,7 @@ $(document).ready(function () {
                 if (result1.status == "0x1") {
                     alert("success")
                     localStorage.setItem("address", account);
-                    location.href = "https://oneid10.github.io/Dashboard";
+                    location.href = "https://1dapp.github.io/Home-Dashboard";
                 }
                 else {
                     $('.error').html('Transaction Failed');
@@ -277,7 +309,7 @@ $(document).ready(function () {
 
     function SignUpPay(account) {
         var add = $('[name="referral"]').val();
-        myContractInstance.methods.regUser(add).send({ from: account, value: 50000000000000000, gasprice: 500 })
+        myContractInstance.methods.regUser(add).send({ from: account, value: 50000000000000000, gasprice: 30 })
             .on('transactionHash', function (hash) {
                 $('.error').html('Pending : Transaction waiting for comfirmation');
                 $('.error').show();
@@ -293,7 +325,7 @@ $(document).ready(function () {
                     if (receipt.status) {
                         alert("success")
                         localStorage.setItem("address", account);
-                        location.href = "https://oneid10.github.io/Dashboard";
+                        location.href = "https://1dapp.github.io/Home-Dashboard";
                     }
                     else {
                         $('.error').html('Transaction Failed');
@@ -318,7 +350,7 @@ $(document).ready(function () {
                        
 
                             localStorage.setItem("address", add);
-                            location.href = "https://oneid10.github.io/Dashboard";
+                            location.href = "https://1dapp.github.io/Home-Dashboard";
                         }
                         else {
                             $('.error').html('You need to register first');
@@ -373,7 +405,7 @@ $(document).ready(function () {
                 <div class="login100-form">
                     <form class="w-100 validate-form" onsubmit="return false" id="signinform">
                         <span class="login100-form-title p-b-10 text-white">
-                            One ID 10 Login
+                            BullRun V3 Login
                         </span>
                         <div class="w-100">
                             <img src="https://1dapp.github.io/wallet.png" class="w-100 p-b-34" />
@@ -386,7 +418,7 @@ $(document).ready(function () {
                         <p class="error m-b-10 alert alert-danger" style="display:none">
 
                         </p>
-                        <p class="m-b-15 text-right text-white">Dont have account ? <a href="https://oneid10.github.io/signup" class="text-white"> Sign up</a></p>
+                        <p class="m-b-15 text-right text-white">Dont have account ? <a href="/signup" class="text-white"> Sign up</a></p>
 
                         <div class="container-login100-form-btn">
                             <button class="btn-success login100-form-btn" id="lgmbtn">
@@ -469,3 +501,5 @@ $(document).ready(function () {
 
 </body>
 </html>
+
+
